@@ -1,18 +1,21 @@
 #include "Relay.h"
+#include "Photographer.h"
 
-const byte relay_1_pin{ 6 };
-const byte relay_2_pin{ 5 };
+const byte focusRelayPin{ 5 };
+const byte shotRelayPin{ 6 };
 
-Relay relay1(relay_1_pin);
-Relay relay2(relay_2_pin);
+Relay focusRelay(focusRelayPin);
+Relay shotRelay(shotRelayPin);
+
+Photographer photographer(focusRelay, shotRelay);
 
 void setup() {
-  relay1.init();
-  relay2.init();
+  photographer.begin();
+  delay(1000);
 }
 
 void loop() {
-  relay1.toggle();
-  relay2.toggle();
+  photographer.makeShot(2000, 3000);
+  photographer.makeShot(2000, 5000);
   delay(2000);
 }
