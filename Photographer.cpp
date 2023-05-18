@@ -33,8 +33,8 @@ void Photographer::makeShot(unsigned long focusDuration, unsigned long shotDurat
   delay(focusDuration);
   shot();
   delay(shotDuration);
-  turnOffFocusRelay();
-  delay(500);
   turnOffShotRelay();
+  delay(500);
+  turnOffFocusRelay();
   delay(500);
 }
